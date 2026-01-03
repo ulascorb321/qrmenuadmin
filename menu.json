@@ -1,0 +1,75 @@
+{
+  "categories": {
+    "turk-kahveleri": {
+      "title": "Türk Kahveleri",
+      "description": "Geleneksel Türk kahveleri",
+      "heroLight": "https://img.pikbest.com/photo/20250616/elegant-presentation-of-turkish-coffee-in-a-traditional-metal-cup-and-saucer_11760213.jpg!f305cw",
+      "heroDark": "https://www.shutterstock.com/image-photo/moody-night-coffee-bokeh-lights-600nw-2632615499.jpg",
+      "items": []
+    },
+    "sicak-icecekler": {
+      "title": "Sıcak İçecekler",
+      "description": "Sıcak kahveler ve içecekler",
+      "heroLight": "https://png.pngtree.com/thumb_back/fh260/background/20251118/pngtree-steaming-hot-latte-with-beautiful-heart-art-in-a-warm-cafe-image_20427071.webp",
+      "heroDark": "https://png.pngtree.com/thumb_back/fw800/background/20251201/pngtree-overhead-shot-of-spilled-coffee-beside-full-mug-on-dark-textured-image_20653319.webp",
+      "items": [
+        {
+          "name": "Çay",
+          "description": "Taze demlenmiş Türk çayı",
+          "price": 10,
+          "lightImage": "https://media.istockphoto.com/id/1149163037/tr/foto%C4%9Fraf/ah%C5%9Fap-arka-planda-s%C4%B1cak-%C3%A7ay-barda%C4%9F%C4%B1-s%C4%B1cak-i%C3%A7ki-buhar-s%C4%B1cak-yumu%C5%9Fak-%C4%B1%C5%9F%C4%B1k-koyu-arka-plan-ile.jpg?s=612x612&w=0&k=20&c=tlE9InFIdbE3EyiRyQnwTwajzU-otK4RNDhX9UDI9GU=",
+          "darkImage": "https://media.istockphoto.com/id/670510760/tr/foto%C4%9Fraf/moody-beyaz-porselen-kupa-%C3%A7ay-fincan-izole-%C3%BCzerinde-siyah-arka-plan-yumu%C5%9Fak-beyaz-ile-taze.jpg?s=1024x1024&w=is&k=20&c=mxXlJuEuzarufl7rgBjeoH2sXWCbNLCKvYoYDLcOe2A="
+        },
+        {
+          "name": "Latte",
+          "description": "Sütlü ve köpüklü latte",
+          "price": 20,
+          "lightImage": "https://png.pngtree.com/thumb_back/fw800/background/20251208/pngtree-steaming-cup-of-latte-art-coffee-with-a-heart-shape-on-image_20776116.webp",
+          "darkImage": "https://img.pikbest.com/photo/20241117/cappuccino-with-heart-shaped-latte-art-_11099650.jpg!w700wp"
+        },
+        {
+          "name": "Americano",
+          "description": "Sade ve güçlü Americano",
+          "price": 30,
+          "lightImage": "https://png.pngtree.com/thumb_back/fw800/background/20251027/pngtree-steaming-cup-of-coffee-on-a-rustic-wooden-table-bathed-in-image_20058123.webp",
+          "darkImage": "https://png.pngtree.com/thumb_back/fw800/background/20251126/pngtree-a-warm-and-cozy-scene-featuring-steaming-cup-of-coffee-on-image_20573448.webp"
+        },
+        {
+          "name": "Sıcak Çikolata",
+          "description": "Marshmallow'lu sıcak çikolata",
+          "price": 50,
+          "lightImage": "https://png.pngtree.com/thumb_back/fw800/background/20250708/pngtree-cozy-winter-night-warm-hot-chocolate-with-marshmallows-image_17602755.webp",
+          "darkImage": "https://png.pngtree.com/thumb_back/fw800/background/20251217/pngtree-a-steaming-mug-of-hot-chocolate-topped-with-fluffy-marshmallows-and-image_20862510.webp"
+        }
+      ]
+    },
+    "soguk-icecekler": {
+      "title": "Soğuk İçecekler",
+      "description": "Serinletici soğuk içecekler",
+      "heroLight": "https://png.pngtree.com/thumb_back/fh260/background/20250606/pngtree-iced-coffee-served-cold-with-ice-cubes-and-milk-image_17380677.jpg",
+      "heroDark": "https://media.istockphoto.com/id/953747716/tr/foto%C4%9Fraf/so%C4%9Fuk-frappe-kahve.jpg?s=612x612&w=0&k=20&c=wnbncP5kGBvunpCWCCSl5lzKsBXBlfI-ifcbnRdwaqc=",
+      "items": []
+    },
+    "klasik-kahveler": {
+      "title": "Klasik Kahveler",
+      "description": "Geleneksel klasik kahveler",
+      "heroLight": "https://png.pngtree.com/background/20250509/original/pngtree-classic-coffee-cup-with-turkish-coffee-on-a-white-isolated-background-picture-image_14828029.jpg",
+      "heroDark": "https://png.pngtree.com/thumb_back/fw800/background/20250323/pngtree-dark-wood-coffee-grinder-with-fresh-ground-beans-photo-photo-image_70037026.webp",
+      "items": []
+    },
+    "tostlar": {
+      "title": "Tostlar",
+      "description": "Lezzetli tost çeşitleri",
+      "heroLight": "https://www.shutterstock.com/image-photo/serving-turkish-traditional-toast-sandwich-260nw-2706330355.jpg",
+      "heroDark": "https://www.shutterstock.com/image-photo/turkish-karisik-atom-ayvalik-tost-260nw-2608043001.jpg",
+      "items": []
+    },
+    "tatlilar": {
+      "title": "Tatlılar",
+      "description": "Tatlı çeşitleri",
+      "heroLight": "https://www.shutterstock.com/image-photo/homemade-tiramisu-cake-on-white-260nw-2251591317.jpg",
+      "heroDark": "https://www.shutterstock.com/image-photo/closeup-tiramisu-slice-layers-cream-260nw-2625243821.jpg",
+      "items": []
+    }
+  }
+}

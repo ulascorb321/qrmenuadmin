@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Aroma - Masa 12</title>
+    <style>
+        /* Genel ve Açık Mod */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            transition: background-color 0.4s, color 0.4s;
+        }
+        header {
+            background-color: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color 0.4s;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.4s;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Homepage.png') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        .good-morning {
+            background-color: #e67e22;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+        .btn {
+            background-color: #e67e22;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+        .menu-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .menu-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .menu-section p {
+            color: #777;
+            margin-bottom: 40px;
+            transition: color 0.4s;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .category-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.4s, box-shadow 0.4s;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        .category-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        .category-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+        .category-card img.light-img {
+            opacity: 1;
+        }
+        .category-card img.dark-img {
+            opacity: 0;
+        }
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #e67e22;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1;
+        }
+        .category-info {
+            padding: 20px;
+            transition: background-color 0.4s;
+        }
+        .category-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .category-info p {
+            color: #777;
+            font-size: 15px;
+            transition: color 0.4s;
+        }
+        .arrow {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 30px;
+            color: #e67e22;
+            transition: color 0.4s;
+        }
+
+        /* Koyu Mod */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode header {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        body.dark-mode nav a {
+            color: #e0e0e0;
+        }
+        body.dark-mode .menu-section p {
+            color: #aaa;
+        }
+        body.dark-mode .category-card {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+        body.dark-mode .category-info p {
+            color: #aaa;
+        }
+        body.dark-mode .category-card img.light-img {
+            opacity: 0;
+        }
+        body.dark-mode .category-card img.dark-img {
+            opacity: 1;
+        }
+
+        /* Tema Butonu */
+        .theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: auto;
+    min-width: 60px;
+    height: 60px;
+    background-color: #e67e22;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: 0 20px;
+    z-index: 1000;
+    transition: background-color 0.4s, width 0.3s;
+}
+.theme-toggle svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+    flex-shrink: 0;
+}
+.theme-toggle span {
+    color: white;
+    font-size: 16px;
+}
+body.dark-mode .theme-toggle {
+    background-color: #f39c12;
+}
+
+.header-container { justify-content: center; }
+
+        /* Mobil */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; padding: 0 20px; }
+            .categories { grid-template-columns: 1fr; }
+            nav { display: none; }
+            .header-container { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+                Cafe Aroma
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="good-morning">Günaydın</div>
+        <h1>HOŞ GELDİNİZ </h1>
+        <p>Tarayın, sipariş verin ve rahatlayın. Taze hazırlanmış favori yemeklerinizi doğrudan masanıza getireceğiz.</p>
+        <a href="#" class="btn">
+            Özel Fırsatlar
+        </a>
+    </section>
+
+    <section class="menu-section">
+        <h2>Menü</h2>
+        <p>Birbirinden lezzetli ürünlerimizden hangisini seçmek istersiniz?</p>
+
+        <div class="categories">
+            <!-- Specials -->
+            <div class="category-card" onclick="window.location='specials.html'">
+                <div class="popular-badge">POPÜLER</div>
+                <div class="category-image-container">
+                    <img class="light-img" src="Tcoffeelight.png" alt="Specials Light">
+                    <img class="dark-img" src="Tcoffedark.png" alt="Specials Dark">
+                </div>
+                <div class="category-info">
+                    <h3>Türk Kahveleri</h3>
+                    <p>Sizin için özenle demlenmiş Türk kahvesi çeşitleri</p>
+                </div>
+                <div class="arrow">→</div>
+            </div>
+
+            <!-- Hot Drinks -->
+            <div class="category-card" onclick="window.location='sicak.html'">
+                <div class="category-image-container">
+                    <img class="light-img" src="Tealight.png" alt="Hot Drinks Light">
+                    <img class="dark-img" src="Teadark.png" alt="Hot Drinks Dark">
+                </div>
+                <div class="category-info">
+                    <h3>Sıcak İçecekler</h3>
+                    <p>Hem içinizi hem sizi kalbinizi sıcacık içecekler.</p>
+                </div>
+                <div class="arrow">→</div>
+            </div>
+
+            <!-- Cold Drinks -->
+            <div class="category-card" onclick="window.location='cold-drinks.html'">
+                <div class="category-image-container">
+                    <img class="light-img" src="Icelight.png" alt="Cold Drinks Light">
+                    <img class="dark-img" src="Icedark.png" alt="Cold Drinks Dark">
+                </div>
+                <div class="category-info">
+                    <h3>Soğuk içecekler</h3>
+                    <p>Soğuk içecekler</p>
+                </div>
+                <div class="arrow">→</div>
+            </div>
+
+            <!-- Pastries -->
+            <div class="category-card" onclick="window.location='pastries.html'">
+                <div class="category-image-container">
+                    <img class="light-img" src="Coffelight.png" alt="Pastries Light">
+                    <img class="dark-img" src="Coffedark.png" alt="Pastries Dark">
+                </div>
+                <div class="category-info">
+                    <h3>Klasik Kahveler</h3>
+                    <p>Klasik Kahveler</p>
+                </div>
+                <div class="arrow">→</div>
+            </div>
+
+            <!-- Sandwiches -->
+            <div class="category-card" onclick="window.location='sandwiches.html'">
+                <div class="category-image-container">
+                    <img class="light-img" src="Toastlight.png" alt="Sandwiches Light">
+                    <img class="dark-img" src="Toastdark.png" alt="Sandwiches Dark">
+                </div>
+                <div class="category-info">
+                    <h3>Tostlar</h3>
+                    <p>Tostlar</p>
+                </div>
+                <div class="arrow">→</div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="category-card" onclick="window.location='desserts.html'">
+                <div class="category-image-container">
+                    <img class="light-img" src="Dessertlight.png" alt="Desserts Light">
+                    <img class="dark-img" src="Dessertdark.png" alt="Desserts Dark">
+                </div>
+                <div class="category-info">
+                    <h3>Tatlılar</h3>
+                    <p>Tatlılar</p>
+                </div>
+                <div class="arrow">→</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tema Değiştirme Butonu -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+    <svg viewBox="0 0 24 24" id="sun-icon">
+        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    <svg viewBox="0 0 24 24" id="moon-icon" style="display:none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <span id="theme-text" style="margin-left: 8px; font-weight: bold;">AÇIK</span>
+</div>
+
+    <script src="java.js"></script>
+
+</body>
+</html>

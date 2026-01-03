@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Aroma - Yönetim Paneli</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.4s, color 0.4s;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #e67e22;
+        }
+        .login-screen, .admin-panel {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 100px auto;
+        }
+        body.dark-mode .login-screen, body.dark-mode .admin-panel {
+            background: #1e1e1e;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background: #e67e22;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #d35400;
+        }
+        .category-section {
+            margin-bottom: 60px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .category-section {
+            background: #1e1e1e;
+        }
+        .item {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        body.dark-mode .item {
+            border-color: #444;
+        }
+        .add-btn {
+            background: #27ae60;
+            margin-top: 10px;
+        }
+        .save-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #e67e22;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-screen" class="login-screen">
+        <h1>Yönetim Paneli</h1>
+        <input type="password" id="password" placeholder="Şifreyi girin">
+        <button onclick="checkPassword()">Giriş Yap</button>
+        <p id="error" style="color:red; display:none;">Yanlış şifre!</p>
+    </div>
+
+    <div id="admin-panel" class="admin-panel" style="display:none;">
+        <div class="container">
+            <h1>Cafe Aroma Menü Yönetimi</h1>
+            <p>Tüm değişiklikleri yaptıktan sonra sağ alttaki <strong>KAYDET</strong> butonuna basın.</p>
+
+            <div id="categories-container"></div>
+
+            <button class="save-btn" onclick="saveMenu()">💾 KAYDET</button>
+        </div>
+    </div>
+
+    <script>
+        const PASSWORD = "123"; // <--- BURAYI DEĞİŞTİR! Müşteriye vereceğin şifre bu olacak
+
+        let menuData = {};
+
+        function checkPassword() {
+            const input = document.getElementById('password').value;
+            if (input === PASSWORD) {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                loadMenu();
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function loadMenu() {
+            fetch('menu.json')
+                .then(r => r.json())
+                .then(data => {
+                    menuData = data;
+                    renderCategories();
+                });
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categories-container');
+            container.innerHTML = '';
+
+            Object.keys(menuData.categories).forEach(catKey => {
+                const cat = menuData.categories[catKey];
+                const div = document.createElement('div');
+                div.className = 'category-section';
+                div.innerHTML = `
+                    <h2>${cat.title}</h2>
+                    <input type="text" value="${cat.description}" onchange="menuData.categories['${catKey}'].description = this.value">
+                    <label>Hero Light Fotoğraf:</label>
+                    <input type="text" value="${cat.heroLight}" onchange="menuData.categories['${catKey}'].heroLight = this.value">
+                    <label>Hero Dark Fotoğraf:</label>
+                    <input type="text" value="${cat.heroDark}" onchange="menuData.categories['${catKey}'].heroDark = this.value">
+                    <h3>Ürünler</h3>
+                    <div id="items-${catKey}"></div>
+                    <button class="add-btn" onclick="addItem('${catKey}')">+ Yeni Ürün Ekle</button>
+                `;
+                container.appendChild(div);
+
+                const itemsDiv = document.getElementById(`items-${catKey}`);
+                cat.items.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    itemDiv.innerHTML = `
+                        <input type="text" value="${item.name}" onchange="menuData.categories['${catKey}'].items[${index}].name = this.value">
+                        <input type="text" value="${item.description}" onchange="menuData.categories['${catKey}'].items[${index}].description = this.value">
+                        <input type="text" value="${item.price}" onchange="menuData.categories['${catKey}'].items[${index}].price = Number(this.value)">
+                        <input type="text" value="${item.lightImage}" onchange="menuData.categories['${catKey}'].items[${index}].lightImage = this.value" placeholder="Light fotoğraf link">
+                        <input type="text" value="${item.darkImage}" onchange="menuData.categories['${catKey}'].items[${index}].darkImage = this.value" placeholder="Dark fotoğraf link">
+                        <button style="background:red;" onclick="deleteItem('${catKey}', ${index})">Sil</button>
+                    `;
+                    itemsDiv.appendChild(itemDiv);
+                });
+            });
+        }
+
+        function addItem(catKey) {
+            menuData.categories[catKey].items.push({
+                name: "Yeni Ürün",
+                description: "Açıklama ekleyin",
+                price: 0,
+                lightImage: "",
+                darkImage: ""
+            });
+            renderCategories();
+        }
+
+        function deleteItem(catKey, index) {
+            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
+                menuData.categories[catKey].items.splice(index, 1);
+                renderCategories();
+            }
+        }
+
+        async function saveMenu() {
+            const token = prompt("GitHub Personal Access Token'ı girin (sadece bir kez gerekir):");
+            if (!token) return;
+
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 2))));
+            const sha = await getCurrentSha();
+
+            const response = await fetch(`https://api.github.com/repos/ulascorb321/qr/contents/menu.json`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: "Menü güncellendi - " + new Date().toLocaleString('tr-TR'),
+                    content: content,
+                    sha: sha
+                })
+            });
+
+            if (response.ok) {
+                alert("✅ Menü başarıyla kaydedildi! 1 dakika içinde canlı sitede görünecek.");
+            } else {
+                alert("Hata oluştu. Konsolu kontrol et.");
+                console.error(await response.text());
+            }
+        }
+
+        async function getCurrentSha() {
+            const res = await fetch('menu.json');
+            const data = await res.json();
+            // GitHub API'den SHA almak için
+            const apiRes = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json');
+            const apiData = await apiRes.json();
+            return apiData.sha;
+        }
+    </script>
+</body>
+</html>
