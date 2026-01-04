@@ -7,11 +7,18 @@
       "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffedark.png",
       "items": [
         {
-          "name": "Yeni Ürün",
-          "description": "Açıklama ekleyin",
+          "name": "Türk Kahvesi",
+          "description": "Türk Kahvesi",
           "price": 150,
           "lightImage": "https://ulascorb321.github.io/qrmenuadmin/Tcoffedark.png",
           "darkImage": "https://ulascorb321.github.io/qrmenuadmin/Tcoffedark.png"
+        },
+        {
+          "name": "Damla Sakızlı Türk Kahvesi",
+          "description": "Damla Sakızlı Türk Kahvesi",
+          "price": 120,
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffeelight2.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffedark2.png"
         }
       ]
     },
