@@ -189,41 +189,51 @@
         }
 
         async function saveMenu() {
-            const token = prompt("GitHub Personal Access Token'ı girin (sadece bir kez gerekir):");
-            if (!token) return;
+    if (!confirm("Değişiklikleri kaydetmek istediğinize emin misiniz?")) return;
 
-            const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 2))));
-            const sha = await getCurrentSha();
+    // Token'ı localStorage'dan al, yoksa sor
+    let token = localStorage.getItem('githubToken');
+    if (!token) {
+        token = prompt("GitHub Personal Access Token'ı girin (bir kez girdikten sonra hatırlanacak):");
+        if (!token) return;
+        localStorage.setItem('githubToken', token); // Hatırlasın
+    }
 
-            const response = await fetch(`https://api.github.com/repos/ulascorb321/qr/contents/menu.json`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `token ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    message: "Menü güncellendi - " + new Date().toLocaleString('tr-TR'),
-                    content: content,
-                    sha: sha
-                })
-            });
+    try {
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 2))));
+        const shaRes = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json', {
+            headers: { 'Authorization': `token ${token}` }
+        });
+        if (!shaRes.ok) throw new Error('Token geçersiz veya izin yok');
+        const shaData = await shaRes.json();
+        const sha = shaData.sha;
 
-            if (response.ok) {
-                alert("✅ Menü başarıyla kaydedildi! 1 dakika içinde canlı sitede görünecek.");
-            } else {
-                alert("Hata oluştu. Konsolu kontrol et.");
-                console.error(await response.text());
-            }
+        const response = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json', {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: "Menü güncellendi - " + new Date().toLocaleString('tr-TR'),
+                content: content,
+                sha: sha
+            })
+        });
+
+        if (response.ok) {
+            alert("✅ Menü başarıyla kaydedildi! 1-2 dakika içinde sitede görünecek.");
+        } else {
+            const err = await response.json();
+            alert("Hata: " + (err.message || "Bilinmeyen hata"));
+            localStorage.removeItem('githubToken'); // Hatalı token'ı sil
         }
-
-        async function getCurrentSha() {
-            const res = await fetch('menu.json');
-            const data = await res.json();
-            // GitHub API'den SHA almak için
-            const apiRes = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json');
-            const apiData = await apiRes.json();
-            return apiData.sha;
-        }
+    } catch (err) {
+        alert("Bağlantı veya token hatası: " + err.message);
+        localStorage.removeItem('githubToken');
+    }
+}
     </script>
 </body>
+
 </html>
