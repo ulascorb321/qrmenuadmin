@@ -48,6 +48,13 @@
           "price": 50,
           "lightImage": "https://png.pngtree.com/thumb_back/fw800/background/20250708/pngtree-cozy-winter-night-warm-hot-chocolate-with-marshmallows-image_17602755.webp",
           "darkImage": "https://png.pngtree.com/thumb_back/fw800/background/20251217/pngtree-a-steaming-mug-of-hot-chocolate-topped-with-fluffy-marshmallows-and-image_20862510.webp"
+        },
+        {
+          "name": "Ihlamur",
+          "description": "Açıklama ekleyin",
+          "price": 150,
+          "lightImage": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/ihlamur-nasil-demlenir_4565_1.jpg",
+          "darkImage": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/ihlamur-nasil-demlenir_4565_1.jpg"
         }
       ]
     },
