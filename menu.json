@@ -25,8 +25,8 @@
           "name": "Çay",
           "description": "Taze demlenmiş Türk çayı",
           "price": 30,
-          "lightImage": "https://ulascorb321.github.io/qr/Tealight3.png",
-          "darkImage": "https://ulascorb321.github.io/qr/TeaDark3.png"
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tealight3.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/TeaDark3.png"
         },
         {
           "name": "Latte",
