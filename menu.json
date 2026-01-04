@@ -5,7 +5,15 @@
       "description": "Geleneksel Türk kahveleri",
       "heroLight": "https://img.pikbest.com/photo/20250616/elegant-presentation-of-turkish-coffee-in-a-traditional-metal-cup-and-saucer_11760213.jpg!f305cw",
       "heroDark": "https://www.shutterstock.com/image-photo/moody-night-coffee-bokeh-lights-600nw-2632615499.jpg",
-      "items": []
+      "items": [
+        {
+          "name": "Yeni Ürün",
+          "description": "Açıklama ekleyin",
+          "price": 150,
+          "lightImage": "https://ulascorb321.github.io/qrmenuadmin/Tcoffedark.png",
+          "darkImage": "https://ulascorb321.github.io/qrmenuadmin/Tcoffedark.png"
+        }
+      ]
     },
     "sicak-icecekler": {
       "title": "Sıcak İçecekler",
