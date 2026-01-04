@@ -50,10 +50,10 @@
           "darkImage": "https://ulascorb321.github.io/qr/hotchocolatedark.png"
         },
         {
-          "name": "Ihlamur",
-          "description": "Ihlamur",
-          "price": 120,
-          "lightImage": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/ihlamur-nasil-demlenir_4565_1.jpg",
+          "name": "ıhlamur",
+          "description": "Açıklama ekleyin",
+          "price": 125,
+          "lightImage": "https://indigodergisi.com/wp-content/uploads/2023/12/ihlamur-cayi.webp",
           "darkImage": "https://indigodergisi.com/wp-content/uploads/2023/12/ihlamur-cayi.webp"
         }
       ]
