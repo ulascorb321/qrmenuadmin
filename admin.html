@@ -124,13 +124,18 @@
         }
 
         function loadMenu() {
-            fetch('menu.json')
-                .then(r => r.json())
-                .then(data => {
-                    menuData = data;
-                    renderCategories();
-                });
-        }
+    fetch('menu.json?v=' + new Date().getTime())  // <--- Cache'i atlat
+        .then(r => r.json())
+        .then(data => {
+            menuData = data;
+            renderCategories();
+        })
+        .catch(err => {
+            alert('menu.json yüklenemedi. Sayfayı yenileyin.');
+            console.error(err);
+        });
+
+    }
 
         function renderCategories() {
             const container = document.getElementById('categories-container');
@@ -231,9 +236,10 @@
             })
         });
 
-        if (response.ok) {
-            alert("✅ Menü başarıyla kaydedildi! 1-2 dakika içinde sitede görünecek.");
-        } else {
+       if (response.ok) {
+    alert("✅ Menü başarıyla kaydedildi! 1-2 dakika içinde sitede görünecek.");
+    location.reload(); // Yeni eklenen satır
+} else {
             const err = await response.json();
             alert("Hata: " + err.message);
             localStorage.removeItem('githubToken');
@@ -247,6 +253,7 @@
 </body>
 
 </html>
+
 
 
 
