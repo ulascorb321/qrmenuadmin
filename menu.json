@@ -32,28 +32,28 @@
           "name": "Latte",
           "description": "Sütlü ve köpüklü latte",
           "price": 20,
-          "lightImage": "https://ulascorb321.github.io/qr/Lattelight.png",
-          "darkImage": "https://ulascorb321.github.io/qr/Lattedark.png"
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Lattelight.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Lattedark.png"
         },
         {
           "name": "Americano",
           "description": "Sade ve güçlü Americano",
           "price": 180,
-          "lightImage": "https://ulascorb321.github.io/qr/Americanolight.png",
-          "darkImage": "https://ulascorb321.github.io/qr/Americanodark.png"
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Americanolight.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Americanodark.png"
         },
         {
           "name": "Sıcak Çikolata",
           "description": "Marshmallow'lu sıcak çikolata",
           "price": 50,
-          "lightImage": "https://ulascorb321.github.io/qr/hotchocolatelight.png",
-          "darkImage": "https://ulascorb321.github.io/qr/hotchocolatedark.png"
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/hotchocolatelight.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/hotchocolatedark.png"
         },
         {
           "name": "ıhlamur",
           "description": "Açıklama ekleyin",
           "price": 125,
-          "lightImage": "https://indigodergisi.com/wp-content/uploads/2023/12/ihlamur-cayi.webp",
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/ihlamurdark.png",
           "darkImage": "https://indigodergisi.com/wp-content/uploads/2023/12/ihlamur-cayi.webp"
         }
       ]
