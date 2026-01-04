@@ -84,7 +84,15 @@
       "description": "Tatlı çeşitleri",
       "heroLight": "https://www.shutterstock.com/image-photo/homemade-tiramisu-cake-on-white-260nw-2251591317.jpg",
       "heroDark": "https://www.shutterstock.com/image-photo/closeup-tiramisu-slice-layers-cream-260nw-2625243821.jpg",
-      "items": []
+      "items": [
+        {
+          "name": "Sütlaç",
+          "description": "Açıklama ekleyin",
+          "price": 350,
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/sutlaclight.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/sutlacdark.png"
+        }
+      ]
     }
   }
 }
