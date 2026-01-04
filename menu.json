@@ -53,8 +53,8 @@
           "name": "ıhlamur",
           "description": "Açıklama ekleyin",
           "price": 125,
-          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/ihlamurdark.png",
-          "darkImage": "https://indigodergisi.com/wp-content/uploads/2023/12/ihlamur-cayi.webp"
+          "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/ihlamurlight.png",
+          "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/ihlamurdark.png"
         }
       ]
     },
