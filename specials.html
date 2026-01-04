@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Aroma - Hot Drinks</title>
+    <style>
+        /* Genel stiller ve açık mod */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        header {
+            background-color: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color 0.4s;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-container { justify-content: center; }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.4s;
+        }
+
+        /* Hero Section - Kategori üst fotoğrafı */
+        .category-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Tealight2.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            position: relative;
+        }
+
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        body.dark-mode .category-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Teadark2.jpg');
+        }
+
+        .category-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .category-hero p {
+            font-size: 20px;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .back-btn {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 30px auto 0;
+            display: block;
+            width: fit-content;
+            padding: 10px 20px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto 100px;
+            padding: 0 20px;
+        }
+
+        .item-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.4s, box-shadow 0.4s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .item-image-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .item-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .item-card img.light-img {
+            opacity: 1;
+        }
+
+        .item-card img.dark-img {
+            opacity: 0;
+        }
+
+        .item-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .item-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .item-info p {
+            color: #777;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: color 0.4s;
+        }
+
+        .price-add {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px 20px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+
+        .add-btn {
+            background-color: #e67e22;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Koyu Mod */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode header {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode nav a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .item-info p {
+            color: #aaa;
+        }
+
+        body.dark-mode .item-card {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode .item-card img.light-img {
+            opacity: 0;
+        }
+
+        body.dark-mode .item-card img.dark-img {
+            opacity: 1;
+        }
+
+        /* Tema Butonu */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: auto;
+            min-width: 60px;
+            height: 60px;
+            background-color: #e67e22;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 0 20px;
+            z-index: 1000;
+            transition: background-color 0.4s, width 0.3s;
+        }
+
+        .theme-toggle svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle span {
+            color: white;
+            font-size: 16px;
+        }
+
+        body.dark-mode .theme-toggle {
+            background-color: #f39c12;
+        }
+
+        /* Mobil */
+        @media (max-width: 768px) {
+            .category-hero h1 {
+                font-size: 36px;
+            }
+
+            .category-hero p {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+            .header-container { justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+                Cafe Aroma
+            </div>
+        </div>
+    </header>
+
+    <!-- Kategori Hero Fotoğrafı -->
+    <section class="category-hero" id="category-hero">
+        <h1 id="category-title">Yükleniyor...</h1>
+        <p id="category-desc">Yükleniyor...</p>
+    </section>
+
+    <a href="index.html" class="back-btn">← Menüye Dön</a>
+
+    <div class="items-grid" id="items-grid">
+        <!-- Ürünler buraya JavaScript ile eklenecek -->
+    </div>
+
+    <!-- Tema Butonu -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+    <svg viewBox="0 0 24 24" id="sun-icon">
+        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    <svg viewBox="0 0 24 24" id="moon-icon" style="display:none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <span id="theme-text" style="margin-left: 8px; font-weight: bold;">AÇIK</span>
+</div>
+
+    <script src="java.js"></script>
+    <script>// Kategori ID'si (dosya adına göre otomatik alıyoruz)
+        const categoryId = "sicak-icecekler"; // Bu sayfayı kopyalayıp diğer kategoriler için değiştir: soguk-icecekler, tostlar vb.
+
+        // menu.json'dan veri çek
+        fetch('menu.json')
+            .then(response => response.json())
+            .then(data => {
+                const cat = data.categories[categoryId];
+                if (!cat) {
+                    document.getElementById('category-title').textContent = 'Kategori Bulunamadı';
+                    return;
+                }
+
+                // Hero güncelle
+                document.getElementById('category-title').textContent = cat.title;
+                document.getElementById('category-desc').textContent = cat.description;
+
+                // Koyu/açık mod için hero fotoğraf
+                const hero = document.querySelector('.category-hero');
+                const isDark = document.body.classList.contains('dark-mode');
+                hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,${isDark ? '0.7' : '0.4'}), rgba(0,0,0,${isDark ? '0.7' : '0.4'})), url('${isDark ? cat.heroDark : cat.heroLight}')`;
+
+                // Ürünleri ekle
+                const grid = document.getElementById('items-grid');
+                cat.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'item-card';
+                    card.innerHTML = `
+                        <div class="item-image-container">
+                            <img class="light-img" src="${item.lightImage}" alt="${item.name}">
+                            <img class="dark-img" src="${item.darkImage}" alt="${item.name}">
+                        </div>
+                        <div class="item-info">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                        <div class="price-add">
+                            <div class="price">₺${item.price.toFixed(2)}</div>
+                            <div class="add-btn">+</div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            })
+            .catch(err => {
+                console.error('Menu yüklenemedi:', err);
+                document.getElementById('category-title').textContent = 'Menü Yüklenemedi';
+            });</script>
+
+</body>
+
+</html>
