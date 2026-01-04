@@ -3,8 +3,8 @@
     "turk-kahveleri": {
       "title": "Türk Kahveleri",
       "description": "Geleneksel Türk kahveleri",
-      "heroLight": "https://img.pikbest.com/photo/20250616/elegant-presentation-of-turkish-coffee-in-a-traditional-metal-cup-and-saucer_11760213.jpg!f305cw",
-      "heroDark": "https://www.shutterstock.com/image-photo/moody-night-coffee-bokeh-lights-600nw-2632615499.jpg",
+      "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffeelight.png",
+      "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffedark.png",
       "items": [
         {
           "name": "Yeni Ürün",
@@ -61,29 +61,29 @@
     "soguk-icecekler": {
       "title": "Soğuk İçecekler",
       "description": "Serinletici soğuk içecekler",
-      "heroLight": "https://png.pngtree.com/thumb_back/fh260/background/20250606/pngtree-iced-coffee-served-cold-with-ice-cubes-and-milk-image_17380677.jpg",
-      "heroDark": "https://media.istockphoto.com/id/953747716/tr/foto%C4%9Fraf/so%C4%9Fuk-frappe-kahve.jpg?s=612x612&w=0&k=20&c=wnbncP5kGBvunpCWCCSl5lzKsBXBlfI-ifcbnRdwaqc=",
+      "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Icelight.png",
+      "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Icedark.png",
       "items": []
     },
     "klasik-kahveler": {
       "title": "Klasik Kahveler",
       "description": "Geleneksel klasik kahveler",
-      "heroLight": "https://png.pngtree.com/background/20250509/original/pngtree-classic-coffee-cup-with-turkish-coffee-on-a-white-isolated-background-picture-image_14828029.jpg",
-      "heroDark": "https://png.pngtree.com/thumb_back/fw800/background/20250323/pngtree-dark-wood-coffee-grinder-with-fresh-ground-beans-photo-photo-image_70037026.webp",
+      "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Coffelight.png",
+      "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Coffedark.png",
       "items": []
     },
     "tostlar": {
       "title": "Tostlar",
       "description": "Lezzetli tost çeşitleri",
-      "heroLight": "https://www.shutterstock.com/image-photo/serving-turkish-traditional-toast-sandwich-260nw-2706330355.jpg",
-      "heroDark": "https://www.shutterstock.com/image-photo/turkish-karisik-atom-ayvalik-tost-260nw-2608043001.jpg",
+      "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Toastlight.png",
+      "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Toastdark.png",
       "items": []
     },
     "tatlilar": {
       "title": "Tatlılar",
       "description": "Tatlı çeşitleri",
-      "heroLight": "https://www.shutterstock.com/image-photo/homemade-tiramisu-cake-on-white-260nw-2251591317.jpg",
-      "heroDark": "https://www.shutterstock.com/image-photo/closeup-tiramisu-slice-layers-cream-260nw-2625243821.jpg",
+      "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Dessertlight.png",
+      "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Dessertdark.png",
       "items": [
         {
           "name": "Sütlaç",
