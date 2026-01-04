@@ -335,7 +335,7 @@
         const categoryId = "sicak-icecekler"; // Bu sayfayı kopyalayıp diğer kategoriler için değiştir: soguk-icecekler, tostlar vb.
 
         // menu.json'dan veri çek
-        fetch('menu.json')
+        fetch('menu.json?v=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
                 const cat = data.categories[categoryId];
@@ -381,5 +381,6 @@
             });</script>
 
 </body>
+
 
 </html>
