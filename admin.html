@@ -191,27 +191,39 @@
         async function saveMenu() {
     if (!confirm("Değişiklikleri kaydetmek istediğinize emin misiniz?")) return;
 
-    // Token'ı localStorage'dan al, yoksa sor
     let token = localStorage.getItem('githubToken');
     if (!token) {
         token = prompt("GitHub Personal Access Token'ı girin (bir kez girdikten sonra hatırlanacak):");
         if (!token) return;
-        localStorage.setItem('githubToken', token); // Hatırlasın
+        localStorage.setItem('githubToken', token);
     }
 
     try {
+        // Base64 encode
         const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 2))));
-        const shaRes = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json', {
-            headers: { 'Authorization': `token ${token}` }
+
+        // SHA al
+        const shaResponse = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json', {
+            headers: {
+                'Authorization': `token ${token}`,
+                'Accept': 'application/vnd.github.v3+json'
+            }
         });
-        if (!shaRes.ok) throw new Error('Token geçersiz veya izin yok');
-        const shaData = await shaRes.json();
+
+        if (!shaResponse.ok) {
+            const err = await shaResponse.json();
+            throw new Error(`SHA alınamadı: ${err.message} (Token geçersiz olabilir)`);
+        }
+
+        const shaData = await shaResponse.json();
         const sha = shaData.sha;
 
-        const response = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json', {
+        // Dosyayı güncelle
+        const putResponse = await fetch('https://api.github.com/repos/ulascorb321/qr/contents/menu.json', {
             method: 'PUT',
             headers: {
                 'Authorization': `token ${token}`,
+                'Accept': 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -221,15 +233,16 @@
             })
         });
 
-        if (response.ok) {
-            alert("✅ Menü başarıyla kaydedildi! 1-2 dakika içinde sitede görünecek.");
+        if (putResponse.ok) {
+            alert("✅ Başarıyla kaydedildi! 1-2 dakika içinde sitede görünecek.");
+            // Token iyi çalıştığı için sakla
         } else {
-            const err = await response.json();
-            alert("Hata: " + (err.message || "Bilinmeyen hata"));
+            const err = await putResponse.json();
+            alert("Hata: " + err.message);
             localStorage.removeItem('githubToken'); // Hatalı token'ı sil
         }
-    } catch (err) {
-        alert("Bağlantı veya token hatası: " + err.message);
+    } catch (error) {
+        alert("Hata: " + error.message);
         localStorage.removeItem('githubToken');
     }
 }
@@ -237,3 +250,4 @@
 </body>
 
 </html>
+
