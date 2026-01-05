@@ -121,6 +121,13 @@
           "price": 350,
           "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/sutlaclight.png",
           "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/sutlacdark.png"
+        },
+        {
+          "name": "Çikolata",
+          "description": "Çikolata",
+          "price": 350,
+          "lightImage": "",
+          "darkImage": ""
         }
       ]
     }
