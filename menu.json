@@ -101,16 +101,9 @@
       "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Coffedark.png",
       "items": [
         {
-          "name": "Kahve",
-          "description": "Kahveee",
-          "price": 123,
-          "lightImage": "",
-          "darkImage": ""
-        },
-        {
-          "name": "Çok iyi bir kahve",
-          "description": "FECİİİİİ",
-          "price": 1888,
+          "name": "Filtre Kahve",
+          "description": "Filtre Kahve",
+          "price": 180,
           "lightImage": "https://i.ibb.co/5WDQb0Kr/Coffelight.jpg",
           "darkImage": "https://i.ibb.co/DfQjWYHM/Coffedark.jpg"
         }
