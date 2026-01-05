@@ -214,14 +214,25 @@
         }
 
         function addItem(catKey) {
-            menuData.categories[catKey].items.push({
+            // Yeni ürünü boş alanlarla ekle
+            const newItem = {
                 name: "Yeni Ürün",
-                description: "Açıklama ekleyin",
+                description: "Açıklama yazın",
                 price: 0,
                 lightImage: "",
                 darkImage: ""
-            });
+            };
+            menuData.categories[catKey].items.push(newItem);
+
+            // Paneli yenile (yeni ürün input'larla dolu gelsin)
             renderCategories();
+
+            // Yeni eklenen ürünün index'ini bul ve input'lara odaklan (isteğe bağlı, kullanıcı dostu olsun)
+            const newIndex = menuData.categories[catKey].items.length - 1;
+            setTimeout(() => {
+                const nameInput = document.querySelector(`#items-${catKey} .item:last-child input[type="text"]:first-child`);
+                if (nameInput) nameInput.focus();
+            }, 100);
         }
 
         function deleteItem(catKey, index) {
