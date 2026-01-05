@@ -19,13 +19,6 @@
           "price": 120,
           "lightImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffeelight2.png",
           "darkImage": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Tcoffedark2.png"
-        },
-        {
-          "name": "Orta Türk Kahvesi",
-          "description": "Orta Türk Kahvesi",
-          "price": 123,
-          "lightImage": "",
-          "darkImage": ""
         }
       ]
     },
