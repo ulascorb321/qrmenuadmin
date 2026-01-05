@@ -70,7 +70,15 @@
       "description": "Serinletici soğuk içecekler",
       "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Icelight.png",
       "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Icedark.png",
-      "items": []
+      "items": [
+        {
+          "name": "Yeni Ürün",
+          "description": "Açıklama ekleyin",
+          "price": 0,
+          "lightImage": "",
+          "darkImage": ""
+        }
+      ]
     },
     "klasik-kahveler": {
       "title": "Klasik Kahveler",
