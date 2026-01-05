@@ -92,7 +92,15 @@
       "description": "Lezzetli tost çeşitleri",
       "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Toastlight.png",
       "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Toastdark.png",
-      "items": []
+      "items": [
+        {
+          "name": "Yeni Ürün",
+          "description": "Açıklama yazın",
+          "price": 0,
+          "lightImage": "",
+          "darkImage": ""
+        }
+      ]
     },
     "tatlilar": {
       "title": "Tatlılar",
