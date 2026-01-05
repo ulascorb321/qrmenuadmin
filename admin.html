@@ -183,31 +183,34 @@
                     const itemDiv = document.createElement('div');
                     itemDiv.className = 'item';
                     itemDiv.innerHTML = `
-                        <h4>Ürün ${index + 1}</h4>
-    <label>İsim:</label>
-    <input type="text" value="${item.name}" onchange="menuData.categories['${catKey}'].items[${index}'].name = this.value">
-    <label>Açıklama:</label>
-    <input type="text" value="${item.description}" onchange="menuData.categories['${catKey}'].items[${index}'].description = this.value">
-    <label>Fiyat (TL):</label>
-    <input type="number" value="${item.price}" onchange="menuData.categories['${catKey}'].items[${index}'].price = Number(this.value)">
-
-    <label>Light Fotoğraf URL:</label>
-    <div style="display:flex; gap:10px; align-items:center;">
-        <input type="text" value="${item.lightImage}" onchange="menuData.categories['${catKey}'].items[${index}'].lightImage = this.value" style="flex:1;">
-        <input type="file" id="light-file-${catKey}-${index}" accept="image/*">
-        <button onclick="uploadImage(document.getElementById('light-file-${catKey}-${index}'), this.previousElementSibling.previousElementSibling, 'Light')">Yükle</button>
-    </div>
-
-    <label>Dark Fotoğraf URL:</label>
-    <div style="display:flex; gap:10px; align-items:center;">
-        <input type="text" value="${item.darkImage}" onchange="menuData.categories['${catKey}'].items[${index}'].darkImage = this.value" style="flex:1;">
-        <input type="file" id="dark-file-${catKey}-${index}" accept="image/*">
-        <button onclick="uploadImage(document.getElementById('dark-file-${catKey}-${index}'), this.previousElementSibling.previousElementSibling, 'Dark')">Yükle</button>
-    </div>
-
-    <button style="background:red; color:white; margin-top:10px;" onclick="deleteItem('${catKey}', ${index})">Bu Ürünü Sil</button>
-    <hr>
-                    `;
+        <h4>Ürün ${index + 1}</h4>
+        
+        <label>İsim:</label>
+        <input type="text" value="${item.name}" data-cat="${catKey}" data-index="${index}" data-field="name">
+        
+        <label>Açıklama:</label>
+        <input type="text" value="${item.description}" data-cat="${catKey}" data-index="${index}" data-field="description">
+        
+        <label>Fiyat (TL):</label>
+        <input type="number" value="${item.price}" data-cat="${catKey}" data-index="${index}" data-field="price">
+        
+        <label>Light Fotoğraf URL:</label>
+        <div style="display:flex; gap:10px; align-items:center;">
+            <input type="text" value="${item.lightImage}" data-cat="${catKey}" data-index="${index}" data-field="lightImage" style="flex:1;">
+            <input type="file" id="light-file-${catKey}-${index}" accept="image/*">
+            <button type="button" onclick="uploadImage(document.getElementById('light-file-${catKey}-${index}'), this.previousElementSibling, 'Light')">Yükle</button>
+        </div>
+        
+        <label>Dark Fotoğraf URL:</label>
+        <div style="display:flex; gap:10px; align-items:center;">
+            <input type="text" value="${item.darkImage}" data-cat="${catKey}" data-index="${index}" data-field="darkImage" style="flex:1;">
+            <input type="file" id="dark-file-${catKey}-${index}" accept="image/*">
+            <button type="button" onclick="uploadImage(document.getElementById('dark-file-${catKey}-${index}'), this.previousElementSibling, 'Dark')">Yükle</button>
+        </div>
+        
+        <button style="background:red; color:white; margin-top:10px;" onclick="deleteItem('${catKey}', ${index})">Bu Ürünü Sil</button>
+        <hr>
+    `;
                     itemsDiv.appendChild(itemDiv);
                 });
             });
@@ -327,6 +330,20 @@
                 alert("Bağlantı hatası: " + err.message);
             }
         }
+
+        // Tüm input değişikliklerini dinle (dinamik eklenenler için)
+        document.addEventListener('input', function (e) {
+            if (e.target.matches('input[data-cat][data-index][data-field]')) {
+                const cat = e.target.dataset.cat;
+                const index = parseInt(e.target.dataset.index);
+                const field = e.target.dataset.field;
+
+                let value = e.target.value;
+                if (field === 'price') value = Number(value);
+
+                menuData.categories[cat].items[index][field] = value;
+            }
+        });
     </script>
 </body>
 
