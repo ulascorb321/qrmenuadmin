@@ -106,6 +106,13 @@
           "price": 123,
           "lightImage": "",
           "darkImage": ""
+        },
+        {
+          "name": "Çok iyi bir kahve",
+          "description": "FECİİİİİ",
+          "price": 1888,
+          "lightImage": "https://i.ibb.co/5WDQb0Kr/Coffelight.jpg",
+          "darkImage": "https://i.ibb.co/DfQjWYHM/Coffedark.jpg"
         }
       ]
     },
