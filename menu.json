@@ -84,6 +84,13 @@
           "price": 0,
           "lightImage": "",
           "darkImage": ""
+        },
+        {
+          "name": "Ice Americano",
+          "description": "Ice Americano",
+          "price": 125,
+          "lightImage": "",
+          "darkImage": ""
         }
       ]
     },
