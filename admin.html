@@ -198,14 +198,14 @@
         <div style="display:flex; gap:10px; align-items:center;">
             <input type="text" value="${item.lightImage}" data-cat="${catKey}" data-index="${index}" data-field="lightImage" style="flex:1;">
             <input type="file" id="light-file-${catKey}-${index}" accept="image/*">
-            <button type="button" onclick="uploadImage(document.getElementById('light-file-${catKey}-${index}'), this.previousElementSibling, 'Light')">Yükle</button>
+            <button onclick="uploadImage(document.getElementById('light-file-${catKey}-${index}'), 'Light')">Yükle</button>
         </div>
         
         <label>Dark Fotoğraf URL:</label>
         <div style="display:flex; gap:10px; align-items:center;">
             <input type="text" value="${item.darkImage}" data-cat="${catKey}" data-index="${index}" data-field="darkImage" style="flex:1;">
             <input type="file" id="dark-file-${catKey}-${index}" accept="image/*">
-            <button type="button" onclick="uploadImage(document.getElementById('dark-file-${catKey}-${index}'), this.previousElementSibling, 'Dark')">Yükle</button>
+            <button onclick="uploadImage(document.getElementById('dark-file-${catKey}-${index}'), 'Dark')">Yükle</button>
         </div>
         
         <button style="background:red; color:white; margin-top:10px;" onclick="deleteItem('${catKey}', ${index})">Bu Ürünü Sil</button>
@@ -302,7 +302,7 @@
             }
         }
 
-        async function uploadImage(fileInput, urlInput, mode) {
+        async function uploadImage(fileInput, mode) {
             const file = fileInput.files[0];
             if (!file) {
                 alert("Lütfen bir fotoğraf seçin.");
@@ -321,8 +321,8 @@
                 const data = await response.json();
                 if (data.success) {
                     const url = data.data.url;
-                    urlInput.value = url; // URL alanına otomatik yaz
-                    alert(`${mode} fotoğraf yüklendi: ${url}`);
+                    alert(`Fotoğraf yüklendi! URL kopyalandı: ${url}\n\nBu URL'yi ilgili "Fotoğraf URL" alanına yapıştırın.`);
+                    navigator.clipboard.writeText(url); // Otomatik kopyala (tarayıcı izin isterse onay ver)
                 } else {
                     alert("Yükleme hatası: " + data.error.message);
                 }
