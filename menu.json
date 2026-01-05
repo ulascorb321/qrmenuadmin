@@ -99,7 +99,15 @@
       "description": "Geleneksel klasik kahveler",
       "heroLight": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Coffelight.png",
       "heroDark": "https://raw.githubusercontent.com/ulascorb321/qrmenuadmin/refs/heads/main/Coffedark.png",
-      "items": []
+      "items": [
+        {
+          "name": "Kahve",
+          "description": "Kahveee",
+          "price": 123,
+          "lightImage": "",
+          "darkImage": ""
+        }
+      ]
     },
     "tostlar": {
       "title": "Tostlar",
